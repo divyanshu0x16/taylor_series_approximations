@@ -6,8 +6,17 @@ import streamlit as st
 st.set_page_config(page_title='Taylor Series Approximations', layout="wide")
 st.title('Taylor Series Approximations')
 
-x = sp.symbols('x')
+st.markdown('''A Taylor series is a mathematical representation of a function as an infinite sum of terms. Any non-polynomial function can be represented by a Taylor series as an infinite summation of polynomials and after a few terms, it can very close approximations to the original function.
 
+The formula for the Taylor series is given by:''')
+
+st.latex(r"f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots")
+
+st.markdown('''where f(a) is the value of the function at x=a and f’(a), f’‘(a), f’‘’(a), etc., are the first, second, third, etc., derivatives of the function evaluated at x=a.
+
+**In our representation, we have considered x = 0, for plotting the graphs. For plotting RMSE, we limited 'x' to range [-4, 4] since taylor series approximation which we are using are around x=0.**''')
+
+x = sp.symbols('x')
 sin_func = sp.sin(x)
 cos_func = sp.cos(x)
 ex_func = sp.exp(x)
@@ -64,7 +73,7 @@ def app():
 
     fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
     ax1.plot(x_range, true_vals, label=label)
-    ax1.plot(x_range, taylor_vals, label=f'Taylor series approx. (order {order})')
+    ax1.plot(x_range, taylor_vals, label=f'Taylor series approx. at x = 0(order {order})')
     ax1.legend()
     ax1.set_xlim([-7, 7])
     ax1.set_ylim([-10, 10])
