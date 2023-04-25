@@ -22,6 +22,14 @@ streamlit run app.py
 
 Once the script is running, select the function to approximate and the order of the approximation using the sidebar, and the script will plot the result.
 
+## Live Demo
+
+```
+https://divyanshu0x16-taylor-series-approximations-app-1fao0k.streamlit.app/
+```
+
+You can find a live demo of this script [here](https://divyanshu0x16-taylor-series-approximations-app-1fao0k.streamlit.app/). Simply select the function and the order of approximation using the sidebar, and the plot will update in real-time.
+
 ## Example
 
 ![exmample_plot](https://user-images.githubusercontent.com/62815174/234184164-02780c81-ffd7-40b2-8226-29da2a915cd5.png)
