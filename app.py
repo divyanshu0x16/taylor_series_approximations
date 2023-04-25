@@ -10,9 +10,10 @@ x = sp.symbols('x')
 
 sin_func = sp.sin(x)
 cos_func = sp.cos(x)
+ex_func = sp.exp(x)
 
 with st.sidebar:
-    function = st.selectbox('Select a function to approximate', ('sin(x)', 'cos(x)'))
+    function = st.selectbox('Select a function to approximate', ('sin(x)', 'cos(x)', 'e^x'))
     order = st.slider('Order of approximation', min_value=1, max_value=10, value=1)
 
 def taylor_series(func, order):
@@ -31,9 +32,14 @@ def app():
         true_vals = np.cos(x_range)
         label = 'cos(x)'
 
+    elif function == 'e^x':
+        taylor = taylor_series(ex_func, order)
+        true_vals = np.exp(x_range)
+        label = 'e^x'
+
     taylor_func = sp.lambdify(x, taylor, 'numpy')
     taylor_vals = taylor_func(x_range)
-
+    
     #For cos(x) = 1
     if(type(taylor_vals)==int):
         taylor_vals=np.ones(200)
@@ -46,6 +52,9 @@ def app():
 
         elif (function == 'cos(x)'):
             rmse_func = sp.lambdify(x, taylor_series(cos_func, i), 'numpy')
+
+        elif (function == 'e^x'):
+            rmse_func =  sp.lambdify(x, taylor_series(ex_func, i), 'numpy')
         
         curr_taylor_vals = rmse_func(x_range)
         if(type(curr_taylor_vals)==int):
