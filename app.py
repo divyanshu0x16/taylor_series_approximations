@@ -87,6 +87,10 @@ def app():
     ax2.set_xlabel('Order')
     ax2.set_ylabel('RMSE')
     ax2.grid(True)
+
+    ax1.set_title('Function Plot')
+    ax2.set_title('Plot for RMSE vs. Order')
+
     st.pyplot(fig)
 
 app()
