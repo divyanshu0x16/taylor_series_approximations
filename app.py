@@ -73,7 +73,7 @@ def app():
 
     fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(10, 5))
     ax1.plot(x_range, true_vals, label=label)
-    ax1.plot(x_range, taylor_vals, label=f'Taylor series approx. at x = 0(order {order})')
+    ax1.plot(x_range, taylor_vals, label=f'Taylor series approx. at x = 0(order {order})', linestyle='--')
     ax1.legend()
     ax1.set_xlim([-7, 7])
     ax1.set_ylim([-10, 10])
